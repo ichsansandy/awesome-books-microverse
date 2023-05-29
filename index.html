@@ -6,36 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome Books</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="app.js"></script>
   </head>
   <body>
     <main>
       <section>
         <h1 class="text-center">Awesome Books</h1>
         <div class="books-container">
-          <div class="book-card">
-            <p class="book-details">
-              Moby-Dick <br />
-              Herman Melville
-            </p>
-            <button>Remove</button>
-            <hr />
-          </div>
-          <div class="book-card">
-            <p class="book-details">
-              Moby-Dick <br />
-              Herman Melville
-            </p>
-            <button>Remove</button>
-            <hr />
-          </div>
         </div>
         <form class="new-book-form">
-          <input placeholder="Title" />
-          <input placeholder="Author" />
-          <button>Add</button>
+          <input id="title-input" placeholder="Title" type="text" required />
+          <input id="author-input" placeholder="Author" type="text" required />
+          <button id="add-book-button" type="submit">Add</button>
         </form>
       </section>
     </main>
+    <script src="app.js"></script>
   </body>
 </html>
