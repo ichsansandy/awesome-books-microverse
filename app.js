@@ -1,4 +1,4 @@
-const booksCollection = [
+let booksCollection = [
   {
     id: 1,
     title: 'Moby-Dick',
@@ -7,6 +7,16 @@ const booksCollection = [
   {
     id: 2,
     title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+  },
+  {
+    id: 3,
+    title: 'The Great Gatsby 1',
+    author: 'F. Scott Fitzgerald',
+  },
+  {
+    id: 4,
+    title: 'The Great Gatsby 2',
     author: 'F. Scott Fitzgerald',
   },
 ];
@@ -18,15 +28,28 @@ function loadBooksCollection() {
                     ${book.title} <br />
                     ${book.author}
                 </p>
-                <button data-book="${book.id}">Remove</button>
+                <button class="remove-button" data-book="${book.id}">Remove</button>
                 <hr />
-            </div>`;
+                </div>`;
   }
 
   const bookContainer = document.querySelector('.books-container');
   bookContainer.innerHTML = booksCollection.map((book) => loopingBook(book)).join('');
+
+  // remove button
+
+  const removeButtons = document.querySelectorAll('.remove-button');
+  removeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      console.log('remove button called');
+      const id = Number(button.getAttribute('data-book'));
+      booksCollection = booksCollection.filter((book) => book.id !== id);
+      loadBooksCollection();
+    });
+  });
 }
 
+loadBooksCollection();
 // add books
 const titleInput = document.querySelector('#title-input');
 const authorInput = document.querySelector('#author-input');
@@ -44,5 +67,3 @@ addButton.addEventListener('click', (e) => {
   titleInput.value = '';
   authorInput.value = '';
 });
-
-loadBooksCollection();
