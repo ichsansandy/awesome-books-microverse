@@ -1,4 +1,4 @@
-class BooksList {
+class BookStore {
   constructor() {
     this.store = [
       {
@@ -24,20 +24,20 @@ class BooksList {
     ];
   }
 
-  addBook(newBook) {
-    this.store.push(newBook);
+  add(book) {
+    this.store.push(book);
   }
 
-  removeBook(bookId) {
-    this.store = this.store.filter((book) => book.id !== bookId);
+  remove(id) {
+    this.store = this.store.filter((item) => item.id !== id);
   }
 }
 
-const booksAwesome = new BooksList();
+const newBookStorage = new BookStore();
 
 const bookStorage = JSON.parse(localStorage.getItem('bookCollection'));
 if (bookStorage !== null) {
-  booksAwesome.store = bookStorage;
+  newBookStorage.store = bookStorage;
 }
 
 function loadBooksCollection() {
@@ -49,20 +49,22 @@ function loadBooksCollection() {
                     ${book.author}
                 </p>
                 <button class="remove-button" data-book="${book.id}">Remove</button>
-          </div>`;
+                
+                </div>`;
   }
 
   const bookContainer = document.querySelector('.books-container');
-  bookContainer.innerHTML = booksAwesome.store.map((book) => loopingBook(book)).join('');
+  bookContainer.innerHTML = newBookStorage.store.map((book) => loopingBook(book)).join('');
 
   // remove button
+
   const removeButtons = document.querySelectorAll('.remove-button');
   removeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const id = Number(button.getAttribute('data-book'));
-      booksAwesome.removeBook(id);
+      newBookStorage.remove(id);
       loadBooksCollection();
-      localStorage.setItem('bookCollection', JSON.stringify(booksAwesome.store));
+      localStorage.setItem('bookCollection', JSON.stringify(newBookStorage.store));
     });
   });
 }
@@ -76,19 +78,19 @@ const addButton = document.querySelector('#add-book-button');
 addButton.addEventListener('click', (e) => {
   e.preventDefault();
   let newid;
-  if (booksAwesome.store.length === 0) {
+  if (newBookStorage.store.length === 0) {
     newid = 1;
   } else {
-    newid = booksAwesome.store[booksAwesome.store.length - 1].id + 1;
+    newid = newBookStorage.store[newBookStorage.store.length - 1].id + 1;
   }
   const newBook = {
     id: newid,
     title: titleInput.value,
     author: authorInput.value,
   };
-  booksAwesome.addBook(newBook);
+  newBookStorage.add(newBook);
   loadBooksCollection();
   titleInput.value = '';
   authorInput.value = '';
-  localStorage.setItem('bookCollection', JSON.stringify(booksAwesome.store));
+  localStorage.setItem('bookCollection', JSON.stringify(newBookStorage.store));
 });
