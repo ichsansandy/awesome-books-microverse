@@ -23,7 +23,7 @@ let booksCollection = [
 
 const bookStorage = JSON.parse(localStorage.getItem('bookCollection'));
 if (bookStorage !== null) {
-  booksCollection = bookStorage
+  booksCollection = bookStorage;
 }
 
 function loadBooksCollection() {
@@ -46,7 +46,6 @@ function loadBooksCollection() {
   const removeButtons = document.querySelectorAll('.remove-button');
   removeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      console.log('remove button called');
       const id = Number(button.getAttribute('data-book'));
       booksCollection = booksCollection.filter((book) => book.id !== id);
       loadBooksCollection();
@@ -63,14 +62,14 @@ const addButton = document.querySelector('#add-book-button');
 
 addButton.addEventListener('click', (e) => {
   e.preventDefault();
-  let id;
+  let newid;
   if (booksCollection.length === 0) {
-    id = 1;
+    newid = 1;
   } else {
-    id = booksCollection[booksCollection.length - 1].id + 1;
+    newid = booksCollection[booksCollection.length - 1].id + 1;
   }
   const newBook = {
-    id: id,
+    id: newid,
     title: titleInput.value,
     author: authorInput.value,
   };
