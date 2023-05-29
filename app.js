@@ -1,29 +1,43 @@
-let booksCollection = [
-  {
-    id: 1,
-    title: 'Moby-Dick',
-    author: 'Herman Melville',
-  },
-  {
-    id: 2,
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-  },
-  {
-    id: 3,
-    title: 'The Great Gatsby 1',
-    author: 'F. Scott Fitzgerald',
-  },
-  {
-    id: 4,
-    title: 'The Great Gatsby 2',
-    author: 'F. Scott Fitzgerald',
-  },
-];
+class BooksList {
+  constructor() {
+    this.store = [
+      {
+        id: 1,
+        title: 'Moby-Dick',
+        author: 'Herman Melville',
+      },
+      {
+        id: 2,
+        title: 'The Great Gatsby',
+        author: 'F. Scott Fitzgerald',
+      },
+      {
+        id: 3,
+        title: 'The Great Gatsby 1',
+        author: 'F. Scott Fitzgerald',
+      },
+      {
+        id: 4,
+        title: 'The Great Gatsby 2',
+        author: 'F. Scott Fitzgerald',
+      },
+    ];
+  }
+
+  addBook(newBook) {
+    this.store.push(newBook);
+  }
+
+  removeBook(bookId) {
+    this.store = this.store.filter((book) => book.id !== bookId);
+  }
+}
+
+const booksAwesome = new BooksList();
 
 const bookStorage = JSON.parse(localStorage.getItem('bookCollection'));
 if (bookStorage !== null) {
-  booksCollection = bookStorage;
+  booksAwesome.store = bookStorage;
 }
 
 function loadBooksCollection() {
@@ -35,22 +49,20 @@ function loadBooksCollection() {
                     ${book.author}
                 </p>
                 <button class="remove-button" data-book="${book.id}">Remove</button>
-                
-                </div>`;
+          </div>`;
   }
 
   const bookContainer = document.querySelector('.books-container');
-  bookContainer.innerHTML = booksCollection.map((book) => loopingBook(book)).join('');
+  bookContainer.innerHTML = booksAwesome.store.map((book) => loopingBook(book)).join('');
 
   // remove button
-
   const removeButtons = document.querySelectorAll('.remove-button');
   removeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const id = Number(button.getAttribute('data-book'));
-      booksCollection = booksCollection.filter((book) => book.id !== id);
+      booksAwesome.removeBook(id);
       loadBooksCollection();
-      localStorage.setItem('bookCollection', JSON.stringify(booksCollection));
+      localStorage.setItem('bookCollection', JSON.stringify(booksAwesome.store));
     });
   });
 }
@@ -64,19 +76,19 @@ const addButton = document.querySelector('#add-book-button');
 addButton.addEventListener('click', (e) => {
   e.preventDefault();
   let newid;
-  if (booksCollection.length === 0) {
+  if (booksAwesome.store.length === 0) {
     newid = 1;
   } else {
-    newid = booksCollection[booksCollection.length - 1].id + 1;
+    newid = booksAwesome.store[booksAwesome.store.length - 1].id + 1;
   }
   const newBook = {
     id: newid,
     title: titleInput.value,
     author: authorInput.value,
   };
-  booksCollection.push(newBook);
+  booksAwesome.addBook(newBook);
   loadBooksCollection();
   titleInput.value = '';
   authorInput.value = '';
-  localStorage.setItem('bookCollection', JSON.stringify(booksCollection));
+  localStorage.setItem('bookCollection', JSON.stringify(booksAwesome.store));
 });
