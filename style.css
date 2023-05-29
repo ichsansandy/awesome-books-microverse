@@ -19,9 +19,15 @@ body {
   background-color: var(--secondary-color);
 }
 
-main {
+main,
+header,
+footer {
   display: grid;
   place-items: center;
+}
+
+header {
+  height: 60px;
 }
 
 section {
@@ -42,7 +48,31 @@ button:hover {
   cursor: pointer;
 }
 
-/* book section */
+/* header */
+
+.links-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 20px;
+}
+
+.links-container li {
+  width: 100px;
+  text-align: center;
+}
+
+.links-container li:first-child{
+  border-right: 5px var(--highlight-color) solid ;
+}
+
+.links-container li:last-child{
+  border-left: 5px var(--highlight-color) solid ;
+}
+
+/* list section */
 
 .book-card {
   display: flex;
