@@ -21,6 +21,11 @@ let booksCollection = [
   },
 ];
 
+const bookStorage = JSON.parse(localStorage.getItem('bookCollection'));
+if (bookStorage !== null) {
+  booksCollection = bookStorage
+}
+
 function loadBooksCollection() {
   function loopingBook(book) {
     return `<div id="${book.id}" class="book-card">
@@ -45,6 +50,7 @@ function loadBooksCollection() {
       const id = Number(button.getAttribute('data-book'));
       booksCollection = booksCollection.filter((book) => book.id !== id);
       loadBooksCollection();
+      localStorage.setItem('bookCollection', JSON.stringify(booksCollection));
     });
   });
 }
@@ -57,8 +63,14 @@ const addButton = document.querySelector('#add-book-button');
 
 addButton.addEventListener('click', (e) => {
   e.preventDefault();
+  let id;
+  if (booksCollection.length === 0) {
+    id = 1;
+  } else {
+    id = booksCollection[booksCollection.length - 1].id + 1;
+  }
   const newBook = {
-    id: booksCollection.length + 1,
+    id: id,
     title: titleInput.value,
     author: authorInput.value,
   };
@@ -66,4 +78,5 @@ addButton.addEventListener('click', (e) => {
   loadBooksCollection();
   titleInput.value = '';
   authorInput.value = '';
+  localStorage.setItem('bookCollection', JSON.stringify(booksCollection));
 });
