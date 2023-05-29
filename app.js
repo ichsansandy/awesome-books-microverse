@@ -30,11 +30,12 @@ function loadBooksCollection() {
   function loopingBook(book) {
     return `<div id="${book.id}" class="book-card">
                 <p class="book-details">
-                    ${book.title} <br />
+                    "${book.title}" 
+                    by 
                     ${book.author}
                 </p>
                 <button class="remove-button" data-book="${book.id}">Remove</button>
-                <hr />
+                
                 </div>`;
   }
 
