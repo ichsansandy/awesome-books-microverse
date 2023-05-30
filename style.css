@@ -204,6 +204,10 @@ button:hover {
   background-image: url(./assets/ichsan.jpg);
 }
 
+.olanike-img {
+  background-image: url(./assets/olanike.jpeg);
+}
+
 .contact-details {
   display: flex;
   width: 100%;
