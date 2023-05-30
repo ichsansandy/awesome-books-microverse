@@ -13,13 +13,13 @@ class BookStore {
       },
       {
         id: 3,
-        title: 'The Great Gatsby 1',
-        author: 'F. Scott Fitzgerald',
+        title: 'Harry Potter',
+        author: 'J.K Rowling',
       },
       {
         id: 4,
-        title: 'The Great Gatsby 2',
-        author: 'F. Scott Fitzgerald',
+        title: 'Laskar Pelangi',
+        author: 'Andrea Hirata',
       },
     ];
   }
@@ -49,8 +49,7 @@ function loadBooksCollection() {
                     ${book.author}
                 </p>
                 <button class="remove-button" data-book="${book.id}">Remove</button>
-                
-                </div>`;
+            </div>`;
   }
 
   const bookContainer = document.querySelector('.books-container');
@@ -93,4 +92,35 @@ addButton.addEventListener('click', (e) => {
   titleInput.value = '';
   authorInput.value = '';
   localStorage.setItem('bookCollection', JSON.stringify(newBookStorage.store));
+});
+
+const navLinks = document.querySelectorAll('.links');
+
+navLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    const dataLink = link.getAttribute('data-page');
+    const listBookSection = document.querySelector('.list-book-section');
+    const newBookSection = document.querySelector('.new-book-section');
+    const contactUsSection = document.querySelector('.contact-us-section');
+
+    switch (dataLink) {
+      case 'list':
+        listBookSection.setAttribute('data-visible', true);
+        newBookSection.setAttribute('data-visible', false);
+        contactUsSection.setAttribute('data-visible', false);
+        break;
+      case 'add-new':
+        newBookSection.setAttribute('data-visible', true);
+        listBookSection.setAttribute('data-visible', false);
+        contactUsSection.setAttribute('data-visible', false);
+        break;
+      case 'contacts':
+        contactUsSection.setAttribute('data-visible', true);
+        newBookSection.setAttribute('data-visible', false);
+        listBookSection.setAttribute('data-visible', false);
+        break;
+      default:
+        break;
+    }
+  });
 });
