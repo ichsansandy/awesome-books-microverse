@@ -208,6 +208,10 @@ button:hover {
   background-image: url(./assets/olanike.jpeg);
 }
 
+.Andry-img {
+  background-image: url(./assets/Andry.jpg);
+}
+
 .contact-details {
   display: flex;
   width: 100%;
