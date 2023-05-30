@@ -19,7 +19,6 @@ body {
   background-color: var(--secondary-color);
 }
 
-main,
 header,
 footer {
   display: grid;
@@ -27,7 +26,17 @@ footer {
 }
 
 header {
-  height: 60px;
+  height: 10vh;
+}
+
+main {
+  display: grid;
+  justify-items: center;
+  min-height: 80vh;
+}
+
+footer {
+  height: 10vh;
 }
 
 section {
@@ -56,20 +65,19 @@ button:hover {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 20px;
 }
 
 .links-container li {
-  width: 100px;
+  width: 150px;
   text-align: center;
 }
 
-.links-container li:first-child{
-  border-right: 5px var(--highlight-color) solid ;
+.links-container li:first-child {
+  border-right: 3px var(--highlight-color) solid;
 }
 
-.links-container li:last-child{
-  border-left: 5px var(--highlight-color) solid ;
+.links-container li:last-child {
+  border-left: 3px var(--highlight-color) solid;
 }
 
 /* list section */
@@ -122,11 +130,40 @@ button:hover {
   place-self: end;
 }
 
+/* footer section */
+
+.footer-container p {
+  margin: 0;
+}
+
+.footer-container p a {
+  text-decoration: none;
+  color: var(--highlight-color);
+}
+
+.footer-container p a:hover {
+  font-size: larger;
+  color: orange;
+}
+
+.footer-container p:nth-child(2) {
+  font-size: 10px;
+  margin: 5px;
+}
+
 /* utility class */
+.text-red {
+  color: red;
+}
+
 .section-title {
   font-size: 3rem;
 }
 
 .text-center {
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }

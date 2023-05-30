@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome Books</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/d19de2aa55.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
@@ -18,11 +19,11 @@
       </nav>
     </header>
     <main>
-      <section>
+      <section class="show">
         <h1 class="section-title text-center">Awesome Books</h1>
         <div class="books-container"></div>
       </section>
-      <section class="new-book-section">
+      <section class="new-book-section hidden">
         <h1 class="section-title text-center">Add a new book</h1>
         <form class="new-book-form">
           <input id="title-input" placeholder="Title" type="text" required />
@@ -30,8 +31,24 @@
           <button id="add-book-button" type="submit">Add</button>
         </form>
       </section>
+      <section class="hidden">
+        <h1 class="section-title text-center">Contact Us</h1>
+        <div class="contact-container"></div>
+      </section>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="footer-container text-center">
+        <p>
+          <a href="https://github.com/ichsansandy/awesome-books-microverse">
+            Support Us
+            <span><i class="fas fa-heart text-red"></i></span>
+          </a>
+        </p>
+        <p>
+          Copyright <span><i class="fas fa-copyright"></i></span> 2023
+        </p>
+      </div>
+    </footer>
     <script src="app.js"></script>
   </body>
 </html>
