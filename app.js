@@ -22,6 +22,30 @@ class BookStore {
         author: 'Andrea Hirata',
       },
     ];
+
+    this.contacts = [
+      {
+        name: 'Ichsan Sandy',
+        classImage: 'ichsan-img',
+        githubLink: 'https://github.com/ichsansandy',
+        linkedLink: 'https://www.linkedin.com/in/ichsans/',
+        instagramLink: 'https://instagram.com/ichsans__',
+      },
+      {
+        name: 'Ichsan Sandy',
+        classImage: 'ichsan-img',
+        githubLink: 'https://github.com/ichsansandy',
+        linkedLink: 'https://www.linkedin.com/in/ichsans/',
+        instagramLink: 'https://instagram.com/ichsans__',
+      },
+      {
+        name: 'Ichsan Sandy',
+        classImage: 'ichsan-img',
+        githubLink: 'https://github.com/ichsansandy',
+        linkedLink: 'https://www.linkedin.com/in/ichsans/',
+        instagramLink: 'https://instagram.com/ichsans__',
+      },
+    ];
   }
 
   add(book) {
@@ -124,3 +148,29 @@ navLinks.forEach((link) => {
     }
   });
 });
+
+function loadContacts() {
+  function loopingContacts(contact) {
+    return `<div class="contact-card">
+              <div class="contact-image ${contact.classImage}"></div>
+              <div class="contact-name text-center">${contact.name}</div>
+              <div class="contact-details">
+                <a class="contact-link" target="_blank" href="${contact.githubLink}">
+                  <i class="fab fa-github-square fa-fw fa-2xl"></i>
+                </a>
+                <a class="contact-link" target="_blank" href="${contact.linkedLink}">
+                  <i class="fab fa-linkedin fa-fw fa-2xl"></i>
+                </a>
+                <a class="contact-link" target="_blank" href="${contact.instagramLink}">
+                  <i class="fab fa-instagram-square fa-fw fa-2xl"></i>
+                </a>
+              </div>
+            </div>`;
+  }
+
+  const contactWrapper = document.querySelector('.contact-wrapper');
+
+  contactWrapper.innerHTML = newBookStorage.contacts.map((contact) => loopingContacts(contact)).join('');
+}
+
+loadContacts();
