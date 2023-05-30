@@ -13,13 +13,37 @@ class BookStore {
       },
       {
         id: 3,
-        title: 'The Great Gatsby 1',
-        author: 'F. Scott Fitzgerald',
+        title: 'Harry Potter',
+        author: 'J.K Rowling',
       },
       {
         id: 4,
-        title: 'The Great Gatsby 2',
-        author: 'F. Scott Fitzgerald',
+        title: 'Laskar Pelangi',
+        author: 'Andrea Hirata',
+      },
+    ];
+
+    this.contacts = [
+      {
+        name: 'Ichsan Sandy',
+        classImage: 'ichsan-img',
+        githubLink: 'https://github.com/ichsansandy',
+        linkedLink: 'https://www.linkedin.com/in/ichsans/',
+        instagramLink: 'https://instagram.com/ichsans__',
+      },
+      {
+        name: 'Olanike Olatunji',
+        classImage: 'olanike-img',
+        githubLink: 'https://github.com/olanikegloria',
+        linkedLink: 'https://www.linkedin.com/in/olanike-olatunji-81a6921b1',
+        instagramLink: 'https://instagram.com/)_olaniee__',
+      },
+      {
+        name: 'Andry Narson',
+        classImage: 'Andry-img',
+        githubLink: 'https://github.com/rbd3',
+        linkedLink: 'https://linkedin.com/in/andry-narson-rabedesana-15b8b4248',
+        instagramLink: 'https://twitter.com/@Narson321',
       },
     ];
   }
@@ -49,8 +73,7 @@ function loadBooksCollection() {
                     ${book.author}
                 </p>
                 <button class="remove-button" data-book="${book.id}">Remove</button>
-                
-                </div>`;
+            </div>`;
   }
 
   const bookContainer = document.querySelector('.books-container');
@@ -94,3 +117,60 @@ addButton.addEventListener('click', (e) => {
   authorInput.value = '';
   localStorage.setItem('bookCollection', JSON.stringify(newBookStorage.store));
 });
+
+const navLinks = document.querySelectorAll('.links');
+
+navLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    const dataLink = link.getAttribute('data-page');
+    const listBookSection = document.querySelector('.list-book-section');
+    const newBookSection = document.querySelector('.new-book-section');
+    const contactUsSection = document.querySelector('.contact-us-section');
+
+    switch (dataLink) {
+      case 'list':
+        listBookSection.setAttribute('data-visible', true);
+        newBookSection.setAttribute('data-visible', false);
+        contactUsSection.setAttribute('data-visible', false);
+        break;
+      case 'add-new':
+        newBookSection.setAttribute('data-visible', true);
+        listBookSection.setAttribute('data-visible', false);
+        contactUsSection.setAttribute('data-visible', false);
+        break;
+      case 'contacts':
+        contactUsSection.setAttribute('data-visible', true);
+        newBookSection.setAttribute('data-visible', false);
+        listBookSection.setAttribute('data-visible', false);
+        break;
+      default:
+        break;
+    }
+  });
+});
+
+function loadContacts() {
+  function loopingContacts(contact) {
+    return `<div class="contact-card">
+              <div class="contact-image ${contact.classImage}"></div>
+              <div class="contact-name text-center">${contact.name}</div>
+              <div class="contact-details">
+                <a class="contact-link" target="_blank" href="${contact.githubLink}">
+                  <i class="fab fa-github-square fa-fw fa-2xl"></i>
+                </a>
+                <a class="contact-link" target="_blank" href="${contact.linkedLink}">
+                  <i class="fab fa-linkedin fa-fw fa-2xl"></i>
+                </a>
+                <a class="contact-link" target="_blank" href="${contact.instagramLink}">
+                  <i class="fab fa-instagram-square fa-fw fa-2xl"></i>
+                </a>
+              </div>
+            </div>`;
+  }
+
+  const contactWrapper = document.querySelector('.contact-wrapper');
+
+  contactWrapper.innerHTML = newBookStorage.contacts.map((contact) => loopingContacts(contact)).join('');
+}
+
+loadContacts();
