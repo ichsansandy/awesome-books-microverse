@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { DateTime } from '../node_modules/luxon/src/luxon.js';
+
 export function loadBookslist(bookInstanceFromBookStore) {
   function loopingBook(book) {
     return `<div id="${book.id}" class="book-card">
@@ -114,4 +117,11 @@ export function loadLocalStorage(bookInstanceFromBookStore) {
   if (bookStorage !== null) {
     bookInstanceFromBookStore.store = bookStorage;
   }
+}
+
+export function loadTime() {
+  const date = DateTime.now();
+  const timeHtml = document.querySelector('.time');
+
+  timeHtml.innerHTML = `${date.hour} <span class="blinker">:</span> ${date.minute}`;
 }
