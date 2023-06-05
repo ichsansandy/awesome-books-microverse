@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { DateTime } from '../node_modules/luxon/src/luxon.js';
 
-export function loadBookslist(bookInstanceFromBookStore) {
+export const loadBookslist = (bookInstanceFromBookStore) => {
   function loopingBook(book) {
     return `<div id="${book.id}" class="book-card">
                   <p class="book-details">
@@ -27,9 +27,9 @@ export function loadBookslist(bookInstanceFromBookStore) {
       localStorage.setItem('bookCollection', JSON.stringify(bookInstanceFromBookStore.store));
     });
   });
-}
+};
 
-export function loadContacts(contactInstanceFromContact) {
+export const loadContacts = (contactInstanceFromContact) => {
   function loopingContacts(contact) {
     return `<div class="contact-card">
                 <div class="contact-image ${contact.classImage}"></div>
@@ -51,9 +51,9 @@ export function loadContacts(contactInstanceFromContact) {
   const contactWrapper = document.querySelector('.contact-wrapper');
 
   contactWrapper.innerHTML = contactInstanceFromContact.profile.map((contact) => loopingContacts(contact)).join('');
-}
+};
 
-export function addBookButton(bookInstanceFromBookStore) {
+export const addBookButton = (bookInstanceFromBookStore) => {
   const titleInput = document.querySelector('#title-input');
   const authorInput = document.querySelector('#author-input');
   const addButton = document.querySelector('#add-book-button');
@@ -77,9 +77,9 @@ export function addBookButton(bookInstanceFromBookStore) {
     authorInput.value = '';
     localStorage.setItem('bookCollection', JSON.stringify(bookInstanceFromBookStore.store));
   });
-}
+};
 
-export function spaExperience() {
+export const spaExperience = () => {
   const navLinks = document.querySelectorAll('.links');
 
   navLinks.forEach((link) => {
@@ -110,18 +110,18 @@ export function spaExperience() {
       }
     });
   });
-}
+};
 
-export function loadLocalStorage(bookInstanceFromBookStore) {
+export const loadLocalStorage = (bookInstanceFromBookStore) => {
   const bookStorage = JSON.parse(localStorage.getItem('bookCollection'));
   if (bookStorage !== null) {
     bookInstanceFromBookStore.store = bookStorage;
   }
-}
+};
 
-export function loadTime() {
+export const loadTime = () => {
   const date = DateTime.now();
   const timeHtml = document.querySelector('.time');
 
   timeHtml.innerHTML = `${date.hour} <span class="blinker">:</span> ${date.minute}`;
-}
+};
