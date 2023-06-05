@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { DateTime } from '../node_modules/luxon/src/luxon.js';
 
 export const loadBookslist = (bookInstanceFromBookStore) => {
