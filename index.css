@@ -29,6 +29,13 @@ header {
   height: 10vh;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 main {
   display: grid;
   justify-items: center;
@@ -68,26 +75,45 @@ button:hover {
   padding: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   list-style: none;
+  gap: 30px;
+  width: 40%;
 }
 
 .links-container li {
-  width: 150px;
+  width: 90px;
   text-align: center;
+  padding: 10px 5px;
 }
 
 .links-container li:hover {
   font-size: large;
   color: orange;
   cursor: pointer;
+  border-bottom: 1px solid orange;
 }
 
-.links-container li:first-child {
-  border-right: 3px var(--highlight-color) solid;
+.logo,
+.time {
+  width: 25%;
+  padding-inline: 20px;
 }
 
-.links-container li:last-child {
-  border-left: 3px var(--highlight-color) solid;
+.logo:hover,
+.time:hover {
+  font-size: 1.2rem;
+  color: orange;
+}
+
+.blinker {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
 /* list section */
@@ -263,6 +289,14 @@ button:hover {
 
 .text-center {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .hidden {
