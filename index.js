@@ -1,8 +1,8 @@
-import BookStore from 'modules/BookStore.js';
-import Contact from 'modules/Contact.js';
+import BookStore from '../modules/BookStore.js';
+import Contact from '../modules/Contact.js';
 import {
   loadTime, loadBookslist, loadContacts, addBookButton, spaExperience, loadLocalStorage,
-} from 'modules/utilityFunction.js';
+} from '../modules/utilityFunction.js';
 
 const newBookStorage = new BookStore();
 const allContacts = new Contact();
