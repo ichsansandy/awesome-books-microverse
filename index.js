@@ -1,4 +1,4 @@
-import BookStore from 'modules/BookStore.js';
+import BookStore from './modules/BookStore.js';
 import Contact from 'modules/Contact.js';
 import {
   loadTime, loadBookslist, loadContacts, addBookButton, spaExperience, loadLocalStorage,
