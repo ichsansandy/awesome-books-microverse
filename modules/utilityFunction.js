@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon.js';
+import { DateTime } from './luxon.js';
 
 export const loadBookslist = (bookInstanceFromBookStore) => {
   function loopingBook(book) {
