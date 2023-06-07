@@ -1,4 +1,4 @@
-import { DateTime } from './luxon.js';
+//import { DateTime } from './luxon.js';
 
 export const loadBookslist = (bookInstanceFromBookStore) => {
   function loopingBook(book) {
@@ -118,9 +118,9 @@ export const loadLocalStorage = (bookInstanceFromBookStore) => {
   }
 };
 
-export const loadTime = () => {
-  const date = DateTime.now();
+<-- export const loadTime = () => {
+ const date = DateTime.now();
   const timeHtml = document.querySelector('.time');
 
   timeHtml.innerHTML = `${date.hour} <span class="blinker">:</span> ${date.minute}`;
-};
+};-->
