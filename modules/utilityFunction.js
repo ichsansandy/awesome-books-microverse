@@ -1,5 +1,3 @@
-//import { DateTime } from './luxon.js';
-
 export const loadBookslist = (bookInstanceFromBookStore) => {
   function loopingBook(book) {
     return `<div id="${book.id}" class="book-card">
@@ -118,9 +116,10 @@ export const loadLocalStorage = (bookInstanceFromBookStore) => {
   }
 };
 
-<-- export const loadTime = () => {
- const date = DateTime.now();
+export const loadTime = () => {
+  // eslint-disable-next-line no-undef
+  const date = luxon.DateTime.now();
   const timeHtml = document.querySelector('.time');
 
   timeHtml.innerHTML = `${date.hour} <span class="blinker">:</span> ${date.minute}`;
-};-->
+};
